@@ -5,6 +5,7 @@ import Tasks from "./components/Tasks"
 import Addtask from './components/Addtask';
 
 function App() {
+  const [showaddtask,setshowaddtask]=useState(false)
   const [tasks,setTasks]=useState([
     {
       id:1,
@@ -46,11 +47,15 @@ const toggleRemainder=(id)=>{
   ))
 }
 
+
   return (
     <div className="Container">
     
-     <Header/>
-     <Addtask onadd={onAdd}/>
+     <Header onshowAddtask={()=>{
+  setshowaddtask(!showaddtask) 
+} 
+} showadd={showaddtask}/>
+     {showaddtask && <Addtask onadd={onAdd}/>}
      <Tasks tasks={tasks} onDelete={deletetask} ontoggleremainder={toggleRemainder}/>
     </div>
   );

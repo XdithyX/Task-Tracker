@@ -1,9 +1,14 @@
 import React from 'react'
 
-function Button(props) {
+function Button({color , onshowAddtask,showadd}) {
   return (
-    <div><button style={{backgroundColor :props.color}} className='btn'>ADD</button></div>
-  )
+    <div>
+    { !showadd?
+      <button style={{backgroundColor :color}} className='btn' onClick={()=>{onshowAddtask()}}  >ADD</button>
+    :<button style={{backgroundColor :color}} className='btn' onClick={()=>{onshowAddtask()}}  >CLOSE</button>
+    }
+    </div>
+      )
 }
 
 export default Button
